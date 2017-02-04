@@ -173,7 +173,7 @@
                     <form id="form" method="POST" action="https://formspree.io/nozimdev@gmail.com">
                     <input type="email" name="email" id="emailContact" placeholder="Your email">
                     <textarea name="message" id="messageContact" placeholder="Your message"></textarea>
-                    <button id="submit" name="submit" type="submit">Send</button>
+                    <button id="submit"  type="submit">Send</button>
                     </form>
 
 
@@ -393,7 +393,7 @@
 
     
 <script>
-$(document).ready(function(){
+/*$(document).ready(function(){
         // click on button submit
         $("#submit").on('click', function(){
             // send ajax
@@ -413,15 +413,15 @@ $(document).ready(function(){
             })
         });
     });
-
-//function sendMessage(){
-  //  $.ajax({
-    //url: "https://formspree.io/nozimdev@gmail.com",
-    //method: "POST",
-    //data: {email:document.getElementById("emailContact"), message: document.getElementById("messageContact")},
-    //dataType: "json"
-//});
-//}
+*/
+function sendMessage(){
+   $.ajax({
+    url: "https://formspree.io/nozimdev@gmail.com",
+    method: "POST",
+    data: {email:document.getElementById("emailContact"), message: document.getElementById("messageContact")},
+    dataType: "json"
+});
+}
 </script>
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
