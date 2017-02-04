@@ -170,10 +170,10 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form method="POST" action="https://formspree.io/nozimdev@gmail.com">
+                    <form id="form" method="POST" action="https://formspree.io/nozimdev@gmail.com">
                     <input type="email" name="email" id="emailContact" placeholder="Your email">
                     <textarea name="message" id="messageContact" placeholder="Your message"></textarea>
-                    <button type="button" onclick="sendMessage();">Send</button>
+                    <button id="submit" name="submit" type="submit">Send</button>
                     </form>
 
 
@@ -393,14 +393,36 @@
 
     
 <script>
-function sendMessage(){
-    $.ajax({
-    url: "https://formspree.io/nozimdev@gmail.com",
-    method: "POST",
-    data: {email:document.getElementById("emailContact"), message: document.getElementById("messageContact")},
-    dataType: "json"
-});
-}</script>
+$(document).ready(function(){
+        // click on button submit
+        $("#submit").on('click', function(){
+            // send ajax
+            $.ajax({
+                url: "https://formspree.io/nozimdev@gmail.com", // url where to submit the request
+                type : "POST", // type of action POST || GET
+                dataType : 'json', // data type
+                data : $("#form").serialize(), // post data || get data
+                success : function(result) {
+                    // you can see the result from the console
+                    // tab of the developer tools
+                    console.log(result);
+                },
+                error: function(xhr, resp, text) {
+                    console.log(xhr, resp, text);
+                }
+            })
+        });
+    });
+
+//function sendMessage(){
+  //  $.ajax({
+    //url: "https://formspree.io/nozimdev@gmail.com",
+    //method: "POST",
+    //data: {email:document.getElementById("emailContact"), message: document.getElementById("messageContact")},
+    //dataType: "json"
+//});
+//}
+</script>
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
